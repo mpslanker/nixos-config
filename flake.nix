@@ -83,6 +83,7 @@
     let
       inherit (self) outputs;
       username = "mslanker";
+      fullname = "Matthew Slanker";
       useremail = "ms@msitp.com";
       workemail = "slanker@opstack.com";
       hostname = "${username}-nix";
@@ -173,6 +174,7 @@
           system = "aarch64-darwin";
           specialArgs = commonSpecialArgs // {
             username = "mslanker";
+            fullname = "Matthew Slanker";
             hostname = "mjolnir";
             homeDirectory = nixpkgs.lib.mkForce "/Users/mslanker";
           };
@@ -193,6 +195,32 @@
               }
             )
             agenix.nixosModules.default
+          ];
+        };
+        onigiri = darwin.lib.darwinSystem {
+          system = "aarch64-darwin";
+          specialArgs = commonSpecialArgs // {
+            username = "mslanker";
+            hostname = "onigiri";
+            homeDirectory = nixpkgs.lib.mkForce "/Users/mslanker";
+          };
+          modules = [
+            # > Our main darwin configuration <
+            ./environments/darwin
+            # home-manager.darwinModules.home-manager
+            # (
+            #   { specialArgs, ... }:
+            #   {
+            #     home-manager.useGlobalPkgs = true;
+            #     home-manager.useUserPackages = true;
+            #     home-manager.extraSpecialArgs = specialArgs;
+            #     home-manager.backupFileExtension = "backup"; # enable moving existing files
+            #     home-manager.users.mslanker.imports = [
+            #       ./home-manager/darwin
+            #     ];
+            #   }
+            # )
+            # agenix.nixosModules.default
           ];
         };
       };

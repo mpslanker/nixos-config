@@ -2,6 +2,7 @@
   lib,
   pkgs,
   username,
+  fullname,
   useremail,
   workemail,
   ...
@@ -44,7 +45,7 @@
     lfs.enable = true;
 
     # TODO replace with your own name & email
-    userName = "${username}";
+    userName = "${fullname}";
     userEmail = "${useremail}";
 
     includes = [
