@@ -45,10 +45,7 @@
           "/System/Applications/System Settings.app"
         ];
         persistent-others = [
-          # TODO: Remove hardcoded value
-          # I want to use homeDirectory but I get an error
-          # about coercing a set into a string.
-          "/Users/mslanker/Downloads"
+          "${homeDirectory.content}/Downloads"
         ];
       };
 
