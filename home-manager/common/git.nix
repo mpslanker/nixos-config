@@ -2,6 +2,7 @@
   lib,
   pkgs,
   username,
+  company,
   fullname,
   useremail,
   workemail,
@@ -31,7 +32,7 @@
   xdg.configFile."git/config.work" = {
     enable = true;
     text = ''
-      ; opstack Configuration Overrides
+      ; ${company} Configuration Overrides
       [user]
         email = ${workemail}
 
@@ -52,7 +53,7 @@
       {
         # Use work config if under ~/code/{company}
         path = "config.work";
-        condition = "gitdir:~/code/opstack/**";
+        condition = "gitdir:~/code/${company}/**";
       }
     ];
 

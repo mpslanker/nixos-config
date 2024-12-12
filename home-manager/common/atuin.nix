@@ -6,7 +6,7 @@
   # programs.atuin.enableBashIntegration = true;
 
   programs.atuin.settings = {
-    # auto_sync = true;
+    auto_sync = true;
     enter_accept = true;
     # sync_frequency = "5m";
     sync_address = "https://api.atuin.sh";

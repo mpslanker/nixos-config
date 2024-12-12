@@ -78,7 +78,7 @@
       # If you do, you can skip setting a root password by passing '--no-root-passwd' to nixos-install.
       # Be sure to change it (using passwd) after rebooting!
       openssh.authorizedKeys.keys = [
-        " ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJe5pR2ATMGK66uDEngdTiMRiN5Su7GPASflwdYMzhzE mslanker"
+        " ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJe5pR2ATMGK66uDEngdTiMRiN5Su7GPASflwdYMzhzE ${username}"
       ];
       description = username;
     };

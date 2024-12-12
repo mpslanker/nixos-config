@@ -45,6 +45,7 @@
       "1password"
       # "nikitabobko/tap/aerospace"
       "alfred"
+      "bettertouchtool"
       "chatgpt"
       "docker"
       "finicky"

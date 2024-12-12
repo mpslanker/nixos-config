@@ -85,6 +85,7 @@
       username = "mslanker";
       fullname = "Matthew Slanker";
       useremail = "ms@msitp.com";
+      company = "opstack";
       workemail = "slanker@opstack.com";
       hostname = "${username}-nix";
       homeDirectory = nixpkgs.lib.mkForce "/home/${username}";
@@ -94,6 +95,7 @@
           inputs
           outputs
           useremail
+          company
           workemail
           stateVersion
           username
@@ -142,13 +144,13 @@
       # });
 
       # NixOS configuration entrypoint
-      # Available through 'nixos-rebuild --flake .#mslanker-wsl'
+      # Available through 'nixos-rebuild --flake .#${username}-wsl'
       # nixosConfigurations = {
-      #   mslanker-wsl = nixpkgs.lib.nixosSystem {
+      #   ${username}-wsl = nixpkgs.lib.nixosSystem {
       #     specialArgs =
       #       commonSpecialArgs
       #       // {
-      #         hostname = "mslanker-wsl";
+      #         hostname = "${username}-wsl";
       #       };
       #     modules = [
       #       nixos-wsl.nixosModules.default
@@ -168,7 +170,7 @@
       # };
 
       # Darwin/macOS configuration entrypoint
-      # Available through 'darwin-rebuild --flake .#mslanker'
+      # Available through 'darwin-rebuild --flake .#${username}'
       darwinConfigurations = {
         mjolnir = darwin.lib.darwinSystem {
           system = "aarch64-darwin";
@@ -176,7 +178,7 @@
             username = "mslanker";
             fullname = "Matthew Slanker";
             hostname = "mjolnir";
-            homeDirectory = nixpkgs.lib.mkForce "/Users/mslanker";
+            homeDirectory = nixpkgs.lib.mkForce "/Users/${username}";
           };
           modules = [
             # > Our main darwin configuration <
@@ -189,7 +191,7 @@
                 home-manager.useUserPackages = true;
                 home-manager.extraSpecialArgs = specialArgs;
                 home-manager.backupFileExtension = "backup"; # enable moving existing files
-                home-manager.users.mslanker.imports = [
+                home-manager.users.${username}.imports = [
                   ./home-manager/darwin
                 ];
               }
@@ -202,7 +204,7 @@
           specialArgs = commonSpecialArgs // {
             username = "mslanker";
             hostname = "onigiri";
-            homeDirectory = nixpkgs.lib.mkForce "/Users/mslanker";
+            homeDirectory = nixpkgs.lib.mkForce "/Users/${username}";
           };
           modules = [
             # > Our main darwin configuration <
@@ -215,7 +217,7 @@
             #     home-manager.useUserPackages = true;
             #     home-manager.extraSpecialArgs = specialArgs;
             #     home-manager.backupFileExtension = "backup"; # enable moving existing files
-            #     home-manager.users.mslanker.imports = [
+            #     home-manager.users.${username}.imports = [
             #       ./home-manager/darwin
             #     ];
             #   }

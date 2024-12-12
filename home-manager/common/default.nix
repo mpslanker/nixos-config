@@ -22,6 +22,7 @@
 
     # You can also split up your configuration and import pieces of it here:
     ./atuin.nix
+    ./email.nix
     #./fish
     #./packages.nix
     ./git.nix
