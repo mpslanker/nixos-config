@@ -7,11 +7,14 @@
 
   programs.atuin.settings = {
     auto_sync = true;
+    dialect = "us";
     enter_accept = true;
     # sync_frequency = "5m";
     sync_address = "https://api.atuin.sh";
     # search_mode = "prefix";
     history_format = "{host}: {time}\t{command}\t{duration}";
     sync.records = true;
+    preview.strategy = "auto";
+    theme.name = "marine";
   };
 }

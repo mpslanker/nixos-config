@@ -62,12 +62,9 @@
 
       registry = lib.mapAttrs (_: flake: { inherit flake; }) flakeInputs;
       nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakeInputs;
-      configureBuildUsers = true;
     };
 
   ids.uids.nixbld = lib.mkForce 350;
-
-  services.nix-daemon.enable = true;
 
   networking.hostName = hostname;
 

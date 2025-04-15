@@ -24,12 +24,13 @@ in
   ];
 
   home.packages = [
-    pkgs.nerd-fonts.jetbrains-mono
-    pkgs.python311Full
-    pkgs.nodejs_20
     pkgs.aerospace
-    pkgs.sketchybar
     pkgs.jankyborders
+    pkgs.nerd-fonts.jetbrains-mono
+    pkgs.nodejs_20
+    pkgs.python311Full
+    pkgs.sketchybar
+    pkgs.watchexec
   ];
 
     # home.packages =

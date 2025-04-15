@@ -48,9 +48,12 @@
       "bettertouchtool"
       "chatgpt"
       "docker"
+      "element"
       "finicky"
       "firefox@developer-edition"
+      "ghostty"
       "google-chrome"
+      "guitar-pro"
       "hammerspoon"
       "iterm2"
       "jordanbaird-ice"
@@ -70,7 +73,9 @@
       "1pSafari" = 1569813296;
       # "magnet" = 441258766;
       "harvest" = 506189836;
+      "logic" = 634148309;
       "outlook" = 985367838;
+      "raindrop" = 1549370672;
       "wireguard" = 1451685025;
       "xcode" = 497799835;
     };
