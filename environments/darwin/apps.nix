@@ -63,6 +63,7 @@
       "obsidian"
       "sf-symbols"
       "the-unarchiver"
+      "visual-studio-code"
     ];
 
     # Applications to install from Mac App Store using mas.
@@ -76,6 +77,7 @@
       "logic" = 634148309;
       "outlook" = 985367838;
       "raindrop" = 1549370672;
+      "supernote" = 1494992020;
       "wireguard" = 1451685025;
       "xcode" = 497799835;
     };

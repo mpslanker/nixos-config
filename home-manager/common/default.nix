@@ -29,7 +29,7 @@
     # ./monolisa.nix
     ./starship.nix
     ./ssh.nix
-    ./vscode.nix
+    # ./vscode.nix
     ./zsh
   ];
 

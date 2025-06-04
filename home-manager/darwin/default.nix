@@ -23,12 +23,16 @@ in
     ./safari.nix
   ];
 
+  home.enableNixProfile = false;
+
   home.packages = [
     pkgs.aerospace
+    pkgs.certbot-full
     pkgs.jankyborders
     pkgs.nerd-fonts.jetbrains-mono
     pkgs.nodejs_20
     pkgs.python311Full
+    pkgs.ruby_3_4
     pkgs.sketchybar
     pkgs.watchexec
   ];
