@@ -1,53 +1,23 @@
 {
-  description = "Slanker Nix Config";
+  description = "Slanker's Nix Config";
 
   inputs = {
     # Nixpkgs
-    # nixpkgs-24.url = "github:nixos/nixpkgs/nixos-24.05";
-    # You can access packages and modules from different nixpkgs revs
-    # at the same time. Here's an working example:
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    # Also see the 'unstable-packages' overlay at 'overlays/default.nix'.
-    # nixpkgs-darwin.url = "github:nixos/nixpkgs/nixpkgs-24.05-darwin";
-    # darwin
-    darwin = {
-      url = "github:lnl7/nix-darwin";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # Use `github:NixOS/nixpkgs/nixpkgs-25.05-darwin` to use Nixpkgs 25.05.
+    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    # Use `github:nix-darwin/nix-darwin/nix-darwin-25.05` to use Nixpkgs 25.05.
+    nix-darwin.url = "github:nix-darwin/nix-darwin/master";
+    nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
+
     # Home manager
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-    # vscode extensions
-    vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
-    vscode-extensions.inputs.nixpkgs.follows = "nixpkgs";
-
-    # wsl
-    # nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
 
     # flake-utils
     flake-utils.url = "github:numtide/flake-utils";
     # systems
     systems.url = "github:nix-systems/default";
-    # devenv
-    # devenv.url = "github:cachix/devenv";
-    # nixpkgs-python
-    # nixpkgs-python.url = "github:cachix/nixpkgs-python";
-    # pre-commit-hooks
-    # pre-commit-hooks.url = "github:cachix/pre-commit-hooks.nix";
-    # brew-nix
-    # brew-nix = {
-    #   url = "github:BatteredBunny/brew-nix";
-    #   inputs.brew-api.follows = "brew-api";
-    # };
-    # brew-api = {
-    #   url = "github:BatteredBunny/brew-api";
-    #   flake = false;
-    # };
-    #disko
-    # disko = {
-    #   url = "github:nix-community/disko";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
+
     # agenix
     agenix = {
       url = "github:ryantm/agenix";
@@ -66,17 +36,9 @@
       self,
       nixpkgs,
       home-manager,
-      vscode-extensions,
-      # nixos-wsl,
-      darwin,
-      # devenv,
+      nix-darwin,
       flake-utils,
       systems,
-      # nixpkgs-python,
-      # pre-commit-hooks,
-      # brew-nix,
-      # brew-api,
-      # disko,
       agenix,
       ...
     }@inputs:
@@ -120,29 +82,6 @@
       # Your custom packages and modifications, exported as overlays
       overlays = import ./environments/common/overlays { inherit inputs; };
 
-      # checks = eachSystem (system: {
-      #   pre-commit-check = pre-commit-hooks.lib.${system}.run {
-      #     src = ./.;
-      #     hooks = {
-      #       alejandra.enable = true;
-      #       check-yaml.enable = true;
-      #       end-of-file-fixer.enable = true;
-      #       gitleaks = {
-      #         enable = true;
-      #         name = "gitleaks";
-      #         entry = "${nixpkgs.legacyPackages.${system}.gitleaks}/bin/gitleaks detect --source . -v";
-      #       };
-      #     };
-      #   };
-      # });
-
-      # devShells = eachSystem (system: {
-      #   default = nixpkgs.legacyPackages.${system}.mkShell {
-      #     inherit (self.checks.${system}.pre-commit-check) shellHook;
-      #     buildInputs = self.checks.${system}.pre-commit-check.enabledPackages;
-      #   };
-      # });
-
       # NixOS configuration entrypoint
       # Available through 'nixos-rebuild --flake .#${username}-wsl'
       # nixosConfigurations = {
@@ -172,7 +111,7 @@
       # Darwin/macOS configuration entrypoint
       # Available through 'darwin-rebuild --flake .#${username}'
       darwinConfigurations = {
-        mjolnir = darwin.lib.darwinSystem {
+        mjolnir = nix-darwin.lib.darwinSystem {
           system = "aarch64-darwin";
           specialArgs = commonSpecialArgs // {
             username = "mslanker";
@@ -199,7 +138,7 @@
             agenix.nixosModules.default
           ];
         };
-        onigiri = darwin.lib.darwinSystem {
+        onigiri = nix-darwin.lib.darwinSystem {
           system = "aarch64-darwin";
           specialArgs = commonSpecialArgs // {
             username = "mslanker";

@@ -23,8 +23,6 @@ in
     ./safari.nix
   ];
 
-  home.enableNixProfile = false;
-
   home.packages = [
     pkgs.aerospace
     pkgs.certbot-full

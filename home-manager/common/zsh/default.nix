@@ -12,19 +12,19 @@
     # autosuggestion.highlight = "fg=#c2bdbd";
 
     shellAliases = {
-      "ll" = "ls -l";
+      "ll" = "ls -la";
       ".." = "cd ..";
     };
 
     initExtra = ''
-      eval "$(/opt/homebrew/bin/brew shellenv)" 
+      eval "$(/opt/homebrew/bin/brew shellenv)"
     '';
 
   };
 
   programs.zsh = {
     enable = true;
-    enableCompletion = true;
+    # enableCompletion = true;
     # autosuggestion.enable = true;
     # autosuggestion.highlight = "fg=#c2bdbd";
 
@@ -36,12 +36,13 @@
     ];
 
     shellAliases = {
-      "ll" = "ls -l";
+      "ll" = "ls -la";
       ".." = "cd ..";
     };
 
-    initExtra = ''
-      eval "$(/opt/homebrew/bin/brew shellenv)" 
+    initContent = ''
+      eval "$(/opt/homebrew/bin/brew shellenv)"
+      autoload -U compinit && compinit # zsh.enableCompletion is not working.
     '';
 
   };
