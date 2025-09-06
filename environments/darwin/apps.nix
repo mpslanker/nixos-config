@@ -30,6 +30,7 @@
       "common-fate/granted"
       "homebrew/bundle"
       "homebrew/services"
+      "siderolabs/tap"
     ];
 
     # `brew install`
@@ -38,6 +39,7 @@
       "azure-cli"
       "granted"
       "pipenv"
+      "talosctl"
     ];
 
     # `brew install --cask`
@@ -47,7 +49,7 @@
       "alfred"
       "bettertouchtool"
       "chatgpt"
-      "docker"
+      "docker-desktop"
       "element"
       "finicky"
       "firefox@developer-edition"
@@ -59,6 +61,7 @@
       "jordanbaird-ice"
       "karabiner-elements"
       "keybase"
+      "kubernetes-cli"
       "microsoft-teams"
       "obsidian"
       "sf-symbols"
